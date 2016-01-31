@@ -1,0 +1,16 @@
+bin/
+.eclipse
+/logs/
+/modules
+/project/project
+/project/target
+/target
+tmp/
+*.iml
+*.eml
+/dist/
+.cache
+.project
+.classpath
+.cache-*
+/.settings
