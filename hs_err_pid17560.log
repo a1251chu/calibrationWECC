@@ -1,0 +1,228 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (malloc) failed to allocate 32744 bytes for ChunkPool::allocate
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   In 32 bit mode, the process size limit was hit
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Use 64 bit Java on a 64 bit OS
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (allocation.cpp:273), pid=17560, tid=17596
+#
+# JRE version: Java(TM) SE Runtime Environment (8.0_65-b17) (build 1.8.0_65-b17)
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (25.65-b01 mixed mode windows-amd64 compressed oops)
+# Failed to write core dump. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00000000025f0800):  JavaThread "main" [_thread_in_vm, id=17596, stack(0x00000000020c0000,0x00000000021c0000)]
+
+Stack: [0x00000000020c0000,0x00000000021c0000]
+[error occurred during error reporting (printing stack bounds), id 0xc0000005]
+
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+
+Java frames: (J=compiled Java code, j=interpreted, Vv=VM code)
+j  sun.misc.Unsafe.defineAnonymousClass(Ljava/lang/Class;[B[Ljava/lang/Object;)Ljava/lang/Class;+0
+j  java.lang.invoke.InvokerBytecodeGenerator.loadAndInitializeInvokerClass([B[Ljava/lang/Object;)Ljava/lang/Class;+8
+j  java.lang.invoke.InvokerBytecodeGenerator.loadMethod([B)Ljava/lang/invoke/MemberName;+6
+j  java.lang.invoke.InvokerBytecodeGenerator.generateCustomizedCode(Ljava/lang/invoke/LambdaForm;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/MemberName;+17
+j  java.lang.invoke.LambdaForm.compileToBytecode()Ljava/lang/invoke/MemberName;+65
+j  java.lang.invoke.DirectMethodHandle.makePreparedLambdaForm(Ljava/lang/invoke/MethodType;I)Ljava/lang/invoke/LambdaForm;+638
+j  java.lang.invoke.DirectMethodHandle.preparedLambdaForm(Ljava/lang/invoke/MethodType;I)Ljava/lang/invoke/LambdaForm;+17
+j  java.lang.invoke.DirectMethodHandle.preparedLambdaForm(Ljava/lang/invoke/MemberName;)Ljava/lang/invoke/LambdaForm;+163
+j  java.lang.invoke.DirectMethodHandle.make(BLjava/lang/Class;Ljava/lang/invoke/MemberName;)Ljava/lang/invoke/DirectMethodHandle;+94
+j  java.lang.invoke.MethodHandles$Lookup.getDirectMethodCommon(BLjava/lang/Class;Ljava/lang/invoke/MemberName;ZZLjava/lang/Class;)Ljava/lang/invoke/MethodHandle;+201
+j  java.lang.invoke.MethodHandles$Lookup.getDirectMethod(BLjava/lang/Class;Ljava/lang/invoke/MemberName;Ljava/lang/Class;)Ljava/lang/invoke/MethodHandle;+8
+j  java.lang.invoke.MethodHandles$Lookup.findStatic(Ljava/lang/Class;Ljava/lang/String;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/MethodHandle;+23
+j  java.lang.invoke.MethodHandleImpl.findCollector(Ljava/lang/String;ILjava/lang/Class;[Ljava/lang/Class;)Ljava/lang/invoke/MethodHandle;+23
+j  java.lang.invoke.MethodHandleImpl.makeFillArrays()[Ljava/lang/invoke/MethodHandle;+36
+j  java.lang.invoke.MethodHandleImpl.access$100()[Ljava/lang/invoke/MethodHandle;+0
+j  java.lang.invoke.MethodHandleImpl$Lazy.<clinit>()V+11
+v  ~StubRoutines::call_stub
+j  java.lang.invoke.MethodHandleImpl.varargsArray(I)Ljava/lang/invoke/MethodHandle;+0
+j  java.lang.invoke.MethodHandleImpl.varargsArray(Ljava/lang/Class;I)Ljava/lang/invoke/MethodHandle;+121
+j  java.lang.invoke.MethodHandle.asCollector(Ljava/lang/Class;I)Ljava/lang/invoke/MethodHandle;+36
+j  java.lang.invoke.MethodHandleImpl$AsVarargsCollector.<init>(Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/Class;)V+20
+j  java.lang.invoke.MethodHandleImpl$AsVarargsCollector.<init>(Ljava/lang/invoke/MethodHandle;Ljava/lang/Class;)V+7
+j  java.lang.invoke.MethodHandleImpl.makeVarargsCollector(Ljava/lang/invoke/MethodHandle;Ljava/lang/Class;)Ljava/lang/invoke/MethodHandle;+43
+j  java.lang.invoke.MethodHandle.setVarargs(Ljava/lang/invoke/MemberName;)Ljava/lang/invoke/MethodHandle;+26
+j  java.lang.invoke.MethodHandles$Lookup.getDirectMethodCommon(BLjava/lang/Class;Ljava/lang/invoke/MemberName;ZZLjava/lang/Class;)Ljava/lang/invoke/MethodHandle;+263
+j  java.lang.invoke.MethodHandles$Lookup.getDirectMethod(BLjava/lang/Class;Ljava/lang/invoke/MemberName;Ljava/lang/Class;)Ljava/lang/invoke/MethodHandle;+8
+j  java.lang.invoke.MethodHandles$Lookup.findStatic(Ljava/lang/Class;Ljava/lang/String;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/MethodHandle;+23
+j  java.lang.invoke.CallSite.<clinit>()V+35
+v  ~StubRoutines::call_stub
+j  java.lang.invoke.MethodHandleNatives.linkCallSiteImpl(Ljava/lang/Class;Ljava/lang/invoke/MethodHandle;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/invoke/MemberName;+6
+j  java.lang.invoke.MethodHandleNatives.linkCallSite(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/invoke/MemberName;+45
+v  ~StubRoutines::call_stub
+j  java.awt.GraphicsEnvironment.getHeadlessProperty()Z+6
+j  java.awt.GraphicsEnvironment.isHeadless()Z+0
+j  java.awt.Toolkit.<clinit>()V+47
+v  ~StubRoutines::call_stub
+j  java.awt.Component.<clinit>()V+93
+v  ~StubRoutines::call_stub
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x0000000007421800 JavaThread "Service Thread" daemon [_thread_blocked, id=17652, stack(0x00000000079a0000,0x0000000007aa0000)]
+  0x00000000073a6800 JavaThread "C1 CompilerThread2" daemon [_thread_in_native, id=17648, stack(0x00000000078a0000,0x00000000079a0000)]
+  0x0000000005dae000 JavaThread "C2 CompilerThread1" daemon [_thread_blocked, id=17644, stack(0x00000000077a0000,0x00000000078a0000)]
+  0x0000000005dab800 JavaThread "C2 CompilerThread0" daemon [_thread_blocked, id=17640, stack(0x00000000072a0000,0x00000000073a0000)]
+  0x0000000005d5f000 JavaThread "Attach Listener" daemon [_thread_blocked, id=17636, stack(0x00000000071a0000,0x00000000072a0000)]
+  0x0000000005d5e000 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=17632, stack(0x00000000070a0000,0x00000000071a0000)]
+  0x00000000026e6800 JavaThread "Finalizer" daemon [_thread_blocked, id=17624, stack(0x0000000006fa0000,0x00000000070a0000)]
+  0x0000000005d19000 JavaThread "Reference Handler" daemon [_thread_blocked, id=17620, stack(0x0000000006ea0000,0x0000000006fa0000)]
+=>0x00000000025f0800 JavaThread "main" [_thread_in_vm, id=17596, stack(0x00000000020c0000,0x00000000021c0000)]
+
+Other Threads:
+  0x0000000005d17000 VMThread [stack: 0x0000000006da0000,0x0000000006ea0000] [id=17616]
+  0x0000000007488800 WatcherThread [stack: 0x0000000007aa0000,0x0000000007ba0000] [id=17656]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Heap:
+ PSYoungGen      total 18432K, used 2540K [0x00000000eb700000, 0x00000000ecb80000, 0x0000000100000000)
+  eden space 15872K, 16% used [0x00000000eb700000,0x00000000eb97b310,0x00000000ec680000)
+  from space 2560K, 0% used [0x00000000ec900000,0x00000000ec900000,0x00000000ecb80000)
+  to   space 2560K, 0% used [0x00000000ec680000,0x00000000ec680000,0x00000000ec900000)
+ ParOldGen       total 42496K, used 0K [0x00000000c2400000, 0x00000000c4d80000, 0x00000000eb700000)
+  object space 42496K, 0% used [0x00000000c2400000,0x00000000c2400000,0x00000000c4d80000)
+ Metaspace       used 4335K, capacity 4768K, committed 4992K, reserved 1056768K
+  class space    used 505K, capacity 541K, committed 640K, reserved 1048576K
+
+Card table byte_map: [0x0000000002ba0000,0x0000000002d90000] byte_map_base: 0x000000000258e000
+
+Marking Bits: (ParMarkBitMap*) 0x000000005376a5b0
+ Begin Bits: [0x00000000032e0000, 0x0000000004250000)
+ End Bits:   [0x0000000004250000, 0x00000000051c0000)
+
+Polling page: 0x00000000004c0000
+
+CodeCache: size=245760Kb used=1335Kb max_used=1335Kb free=244424Kb
+ bounds [0x000000000f010000, 0x000000000f280000, 0x000000001e010000]
+ total_blobs=434 nmethods=167 adapters=180
+ compilation: enabled
+
+Compilation events (10 events):
+Event: 0.250 Thread 0x00000000073a6800 nmethod 152 0x000000000f152ed0 code [0x000000000f153060, 0x000000000f153438]
+Event: 0.250 Thread 0x00000000073a6800  154       3       java.util.Collections$UnmodifiableCollection$1::hasNext (10 bytes)
+Event: 0.250 Thread 0x00000000073a6800 nmethod 154 0x000000000f1582d0 code [0x000000000f158440, 0x000000000f158668]
+Event: 0.250 Thread 0x00000000073a6800  155       1       java.lang.invoke.MethodHandle::type (5 bytes)
+Event: 0.250 Thread 0x00000000073a6800 nmethod 155 0x000000000f158710 code [0x000000000f158860, 0x000000000f158970]
+Event: 0.250 Thread 0x00000000073a6800  157       3       jdk.internal.org.objectweb.asm.Type::getArgumentsAndReturnSizes (151 bytes)
+Event: 0.251 Thread 0x00000000073a6800 nmethod 157 0x000000000f158cd0 code [0x000000000f158f00, 0x000000000f159c78]
+Event: 0.251 Thread 0x00000000073a6800  158       3       java.lang.invoke.InvokerBytecodeGenerator::isStaticallyNameable (116 bytes)
+Event: 0.254 Thread 0x00000000073a6800 nmethod 158 0x000000000f15a790 code [0x000000000f15ab00, 0x000000000f15cbd8]
+Event: 0.254 Thread 0x00000000073a6800  162       3       jdk.internal.org.objectweb.asm.Frame::execute (2252 bytes)
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (0 events):
+No events
+
+Internal exceptions (8 events):
+Event: 0.055 Thread 0x00000000025f0800 Exception <a 'java/lang/NoSuchMethodError': Method sun.misc.Unsafe.defineClass(Ljava/lang/String;[BII)Ljava/lang/Class; name or signature does not match> (0x00000000eb713050) thrown at [C:\workspace\8-2-build-windows-amd64-cygwin\jdk8u65\4987\hotspot\src\sª¾Á­r¬?
+Event: 0.055 Thread 0x00000000025f0800 Exception <a 'java/lang/NoSuchMethodError': Method sun.misc.Unsafe.prefetchRead(Ljava/lang/Object;J)V name or signature does not match> (0x00000000eb713338) thrown at [C:\workspace\8-2-build-windows-amd64-cygwin\jdk8u65\4987\hotspot\src\share\vm\prims\jni.Ñ`¨S>È?
+Event: 0.189 Thread 0x00000000025f0800 Exception <a 'java/security/PrivilegedActionException'> (0x00000000eb82ffe0) thrown at [C:\workspace\8-2-build-windows-amd64-cygwin\jdk8u65\4987\hotspot\src\share\vm\prims\jvm.cpp, line 1386]
+Event: 0.189 Thread 0x00000000025f0800 Exception <a 'java/security/PrivilegedActionException'> (0x00000000eb8301f0) thrown at [C:\workspace\8-2-build-windows-amd64-cygwin\jdk8u65\4987\hotspot\src\share\vm\prims\jvm.cpp, line 1386]
+Event: 0.191 Thread 0x00000000025f0800 Exception <a 'java/security/PrivilegedActionException'> (0x00000000eb834038) thrown at [C:\workspace\8-2-build-windows-amd64-cygwin\jdk8u65\4987\hotspot\src\share\vm\prims\jvm.cpp, line 1386]
+Event: 0.191 Thread 0x00000000025f0800 Exception <a 'java/security/PrivilegedActionException'> (0x00000000eb834248) thrown at [C:\workspace\8-2-build-windows-amd64-cygwin\jdk8u65\4987\hotspot\src\share\vm\prims\jvm.cpp, line 1386]
+Event: 0.204 Thread 0x00000000025f0800 Exception <a 'java/io/FileNotFoundException'> (0x00000000eb8901e8) thrown at [C:\workspace\8-2-build-windows-amd64-cygwin\jdk8u65\4987\hotspot\src\share\vm\prims\jni.cpp, line 709]
+Event: 0.255 Thread 0x00000000025f0800 Exception <a 'java/lang/NoSuchFieldError': method resolution failed> (0x00000000eb95e618) thrown at [C:\workspace\8-2-build-windows-amd64-cygwin\jdk8u65\4987\hotspot\src\share\vm\prims\methodHandles.cpp, line 1146]
+
+Events (10 events):
+Event: 0.237 loading class java/lang/invoke/WrongMethodTypeException
+Event: 0.237 loading class java/lang/invoke/WrongMethodTypeException done
+Event: 0.240 loading class java/lang/invoke/MethodHandleImpl$Lazy
+Event: 0.240 loading class java/lang/invoke/MethodHandleImpl$Lazy done
+Event: 0.240 loading class java/lang/invoke/MethodHandleImpl$IntrinsicMethodHandle
+Event: 0.240 loading class java/lang/invoke/MethodHandleImpl$IntrinsicMethodHandle done
+Event: 0.255 loading class java/lang/NoSuchFieldError
+Event: 0.255 loading class java/lang/NoSuchFieldError done
+Event: 0.255 loading class java/lang/IllegalAccessException
+Event: 0.255 loading class java/lang/IllegalAccessException done
+
+
+Dynamic libraries:
+0x00007ff7aeb60000 - 0x00007ff7aeb97000 	C:\Program Files\Java\jdk1.8.0_65\bin\javaw.exe
+0x00007ff917ee0000 - 0x00007ff9180a1000 	C:\WINDOWS\SYSTEM32\ntdll.dll
+0x00007ff917e30000 - 0x00007ff917edd000 	C:\WINDOWS\system32\KERNEL32.DLL
+0x00007ff9150d0000 - 0x00007ff9152b8000 	C:\WINDOWS\system32\KERNELBASE.dll
+0x00007ff9175f0000 - 0x00007ff917697000 	C:\WINDOWS\system32\ADVAPI32.dll
+0x00007ff9176a0000 - 0x00007ff91773d000 	C:\WINDOWS\system32\msvcrt.dll
+0x00007ff916d60000 - 0x00007ff916dbb000 	C:\WINDOWS\system32\sechost.dll
+0x00007ff915680000 - 0x00007ff91579c000 	C:\WINDOWS\system32\RPCRT4.dll
+0x00007ff9152c0000 - 0x00007ff915416000 	C:\WINDOWS\system32\USER32.dll
+0x00007ff917150000 - 0x00007ff9172d6000 	C:\WINDOWS\system32\GDI32.dll
+0x00007ff910440000 - 0x00007ff9106b4000 	C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.10586.0_none_8c15ae12515e1c22\COMCTL32.dll
+0x00007ff916df0000 - 0x00007ff91706d000 	C:\WINDOWS\system32\combase.dll
+0x00007ff914570000 - 0x00007ff9145da000 	C:\WINDOWS\system32\bcryptPrimitives.dll
+0x00007ff915640000 - 0x00007ff91567b000 	C:\WINDOWS\system32\IMM32.DLL
+0x00007ff9143d0000 - 0x00007ff914401000 	C:\Windows\system32\nvinitx.dll
+0x00007ff9143c0000 - 0x00007ff9143ca000 	C:\WINDOWS\SYSTEM32\VERSION.dll
+0x000000000f000000 - 0x000000000f006000 	C:\Program Files\NVIDIA Corporation\CoProcManager\_etoured.dll
+0x00007ff911ed0000 - 0x00007ff911f02000 	C:\Program Files\NVIDIA Corporation\CoProcManager\nvd3d9wrapx.dll
+0x00007ff917750000 - 0x00007ff917b79000 	C:\WINDOWS\system32\SETUPAPI.dll
+0x00007ff914840000 - 0x00007ff914883000 	C:\WINDOWS\system32\CFGMGR32.dll
+0x00007ff911e80000 - 0x00007ff911ea2000 	C:\Program Files\NVIDIA Corporation\CoProcManager\nvdxgiwrapx.dll
+0x0000000052e50000 - 0x0000000052f22000 	C:\Program Files\Java\jdk1.8.0_65\jre\bin\msvcr100.dll
+0x0000000052f60000 - 0x00000000537e9000 	C:\Program Files\Java\jdk1.8.0_65\jre\bin\server\jvm.dll
+0x00007ff917740000 - 0x00007ff917748000 	C:\WINDOWS\system32\PSAPI.DLL
+0x00007ff909260000 - 0x00007ff909269000 	C:\WINDOWS\SYSTEM32\WSOCK32.dll
+0x00007ff912710000 - 0x00007ff912733000 	C:\WINDOWS\SYSTEM32\WINMM.dll
+0x00007ff917c60000 - 0x00007ff917ccb000 	C:\WINDOWS\system32\WS2_32.dll
+0x0000000000940000 - 0x000000000096c000 	C:\WINDOWS\SYSTEM32\WINMMBASE.dll
+0x0000000053c20000 - 0x0000000053c2f000 	C:\Program Files\Java\jdk1.8.0_65\jre\bin\verify.dll
+0x0000000053bf0000 - 0x0000000053c19000 	C:\Program Files\Java\jdk1.8.0_65\jre\bin\java.dll
+0x0000000053bd0000 - 0x0000000053be6000 	C:\Program Files\Java\jdk1.8.0_65\jre\bin\zip.dll
+0x00007ff9157a0000 - 0x00007ff916cff000 	C:\WINDOWS\system32\SHELL32.dll
+0x00007ff914890000 - 0x00007ff914ed4000 	C:\WINDOWS\system32\windows.storage.dll
+0x00007ff917b80000 - 0x00007ff917bd2000 	C:\WINDOWS\system32\shlwapi.dll
+0x00007ff9144e0000 - 0x00007ff9144ef000 	C:\WINDOWS\system32\kernel.appcore.dll
+0x00007ff914ee0000 - 0x00007ff914f95000 	C:\WINDOWS\system32\shcore.dll
+0x00007ff914520000 - 0x00007ff91456b000 	C:\WINDOWS\system32\powrprof.dll
+0x00007ff9144f0000 - 0x00007ff914504000 	C:\WINDOWS\system32\profapi.dll
+0x0000000052cb0000 - 0x0000000052e48000 	C:\Program Files\Java\jdk1.8.0_65\jre\bin\awt.dll
+0x00007ff917070000 - 0x00007ff917131000 	C:\WINDOWS\system32\OLEAUT32.dll
+0x00007ff912c80000 - 0x00007ff912cf9000 	C:\WINDOWS\system32\apphelp.dll
+
+VM Arguments:
+jvm_args: -Dfile.encoding=UTF-8 
+java_command: wecc.Cal.MainFrame
+java_class_path (initial): C:\Users\CHU\workspace\calibration\bin;C:\Users\CHU\Desktop\ws\calibration\RXTXcomm.jar
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+PATH=C:/Program Files/Java/jdk1.8.0_65/bin/../jre/bin/server;C:/Program Files/Java/jdk1.8.0_65/bin/../jre/bin;C:/Program Files/Java/jdk1.8.0_65/bin/../jre/lib/amd64;D:\Emgu\emgucv-windows-universal-gpu 2.4.9.1847\lib;C:\Program Files\nodejs\;C:\Program Files (x86)\IVI Foundation\VISA\WinNT\Bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;d:\rasp;C:\Program Files\Java\jdk1.8.0_65\bin;C:\Program Files\TortoiseGit\bin;C:\Users\CHU\.dnx\bin;D:\opencv\opencv\build\x86\vc10\bin;D:\Emgu\emgucv-windows-x86 2.4.0.1717\bin\x86;C:\Users\CHU\AppData\Roaming\npm;C:\AppServ\Apache24\bin;C:\AppServ\php5;C:\AppServ\MySQL\bin;C:\Users\CHU\Desktop;
+USERNAME=CHU
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 42 Stepping 7, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 10.0 , 64 bit Build 10586 (10.0.10586.0)
+
+CPU:total 4 (2 cores per cpu, 2 threads per core) family 6 model 42 stepping 7, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, clmul, ht, tsc, tscinvbit
+
+Memory: 4k page, physical 4042604k(1019532k free), swap 16625516k(3236k free)
+
+vm_info: Java HotSpot(TM) 64-Bit Server VM (25.65-b01) for windows-amd64 JRE (1.8.0_65-b17), built on Oct  6 2015 16:39:20 by "java_re" with MS VC++ 10.0 (VS2010)
+
+time: Mon Feb 01 16:32:24 2016
+elapsed time: 0 seconds (0d 0h 0m 0s)
+
