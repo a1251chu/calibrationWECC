@@ -25,7 +25,7 @@ public class ArduinoController implements SerialPortEventListener{
 	    private OutputStream output;
 	    
 	    private static final int TIME_OUT = 1000; // Port open timeout
-	    private static final int DATA_RATE = 9600; // Arduino serial port
+	    private static final int DATA_RATE = 115200; // Arduino serial port
 
 	    public boolean initialize() {
 	        try {
@@ -72,7 +72,7 @@ public class ArduinoController implements SerialPortEventListener{
 	            serialPort.notifyOnDataAvailable(true);
 
 	            // Give the Arduino some time
-	            try { Thread.sleep(2000); } catch (InterruptedException ie) {}
+	            try { Thread.sleep(50); } catch (InterruptedException ie) {}
 	            
 	            return true;
 	        }
@@ -140,14 +140,14 @@ public class ArduinoController implements SerialPortEventListener{
 	        ArduinoController test = new ArduinoController();
 	        if ( test.initialize() ) {
 	            test.sendData(hiControlText);
-	            try { Thread.sleep(200); } catch (InterruptedException ie) {}
+	            try { Thread.sleep(50); } catch (InterruptedException ie) {}
 	            test.sendData(lowControlText);
-	            try { Thread.sleep(200); } catch (InterruptedException ie) {}
+	            try { Thread.sleep(50); } catch (InterruptedException ie) {}
 	            test.close();
 	        }
 
 	        // Wait 5 seconds then shutdown
-	        try { Thread.sleep(2000); } catch (InterruptedException ie) {}
+	        try { Thread.sleep(100); } catch (InterruptedException ie) {}
 	    }
 	    
 

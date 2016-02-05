@@ -1,32 +1,26 @@
 package wecc.Cal;
 
-import java.awt.BorderLayout;
+
 import java.awt.EventQueue;
-import java.awt.FlowLayout;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
-import java.awt.GridLayout;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import java.awt.Color;
-import javax.swing.JSplitPane;
-import javax.swing.JTabbedPane;
-import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.UIManager;
+
+import eu.hansolo.steelseries.extras.AirCompass;
+import eu.hansolo.steelseries.gauges.DisplayRectangular;
+import eu.hansolo.steelseries.tools.GaugeType;
+
+import java.awt.CardLayout;
 
 public class MainFrame extends JFrame {
 
@@ -38,8 +32,6 @@ public class MainFrame extends JFrame {
 	static GraphicsDevice device = GraphicsEnvironment
 	        .getLocalGraphicsEnvironment().getScreenDevices()[0];
 	static MainFrame mainFrame;
-	static AutoFrame autoFrame;
-	static ManualFrame manualFrame;
 	static Calibratrion cal;
 	static String statusMessage;
 	static String status;
@@ -48,8 +40,14 @@ public class MainFrame extends JFrame {
 	static JLabel gasVoltage;
 	static JLabel lblGasTargetFlow;
 	static JLabel lblAirTargetFlow;
-	static JButton btnStandBy;
+	static JButton standbyBtn;
 	static JButton manualBtn;
+	SystemSetting sys = new SystemSetting();
+	GasPanel gasPanel;
+	AutoPanel autoPanel;
+	AddGasPanel addGasPanel;
+	TypePanel typePanel;
+	CardLayout cl;
 	JButton autoBtn;
 	public static void main(String[] args) {
 
@@ -60,7 +58,6 @@ public class MainFrame extends JFrame {
 					mainFrame = new MainFrame();
 					device.setFullScreenWindow(mainFrame);
 					mainFrame.setVisible(true);
-					
 
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -82,35 +79,30 @@ public class MainFrame extends JFrame {
 
 	private void initialComponent() {
 		setFullScreen();
-
 		setBounds(0, 0, 1050, 1500);
-		
-		getContentPane().setLayout(new BorderLayout() );
 		getContentPane().setSize(1000,1000);
-
-		
+		getContentPane().setLayout(new CardLayout());
 		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(Color.GRAY);
-		getContentPane().add(panel_1);
+		setCardLayoutComponent(panel_1);
+		panel_1.setBackground(sys.sysLightGrayBackground);
 		panel_1.setLayout(null);
 		
-		JButton gasBtn = new JButton("Gas");
-		gasBtn.setSize(100, 100);
+
+
+		
+		JButton gasBtn = sys.sysGasBtn;
 		gasBtn.setLocation(25, 361);
 		panel_1.add(gasBtn);
 	
-		autoBtn = new JButton("Auto Gen");
-		autoBtn.setSize(100, 100);
+		autoBtn = sys.sysAutoBtn;
 		autoBtn.setLocation(180, 361);
 		panel_1.add(autoBtn);
 		
-		manualBtn = new JButton("Manual Gen");
-		manualBtn.setSize(100, 100);
+		manualBtn = sys.sysManualBtn;
 		manualBtn.setLocation(333, 361);
 		panel_1.add(manualBtn);
 		
-		JButton settingBtn = new JButton("Setting");
-		settingBtn.setSize(100, 100);
+		JButton settingBtn = sys.sysSetBtn;
 		settingBtn.setLocation(625, 361);
 		panel_1.add(settingBtn);
 		
@@ -127,64 +119,68 @@ public class MainFrame extends JFrame {
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(135, 206, 235));
-		panel.setBounds(225, 10, 492, 299);
+		panel.setBounds(223, 10, 492, 176);
 		panel_1.add(panel);
 		panel.setLayout(null);
 		
 		JLabel lblCal = new JLabel("Air");
 		lblCal.setForeground(Color.WHITE);
 		lblCal.setFont(new Font("Arial Black", Font.BOLD, 25));
-		lblCal.setBounds(221, 10, 58, 36);
+		lblCal.setBounds(221, 46, 58, 36);
 		panel.add(lblCal);
 		
 		JLabel lblGas = new JLabel("GAS");
 		lblGas.setForeground(Color.WHITE);
 		lblGas.setFont(new Font("Arial Black", Font.BOLD, 25));
-		lblGas.setBounds(350, 10, 72, 36);
+		lblGas.setBounds(350, 46, 72, 36);
 		panel.add(lblGas);
 		
 		JLabel lblVoltage = new JLabel("Voltage");
 		lblVoltage.setForeground(Color.WHITE);
 		lblVoltage.setFont(new Font("Arial Black", Font.BOLD, 25));
-		lblVoltage.setBounds(10, 97, 122, 36);
+		lblVoltage.setBounds(10, 133, 122, 36);
 		panel.add(lblVoltage);
 		
 		airVoltage = new JLabel("0.0");
 		airVoltage.setForeground(Color.WHITE);
 		airVoltage.setFont(new Font("Arial Black", Font.BOLD, 25));
-		airVoltage.setBounds(221, 97, 122, 36);
+		airVoltage.setBounds(221, 133, 122, 36);
 		panel.add(airVoltage);
 		
 		gasVoltage = new JLabel("0.0");
 		gasVoltage.setForeground(Color.WHITE);
 		gasVoltage.setFont(new Font("Arial Black", Font.BOLD, 25));
-		gasVoltage.setBounds(350, 97, 132, 36);
+		gasVoltage.setBounds(350, 133, 132, 36);
 		panel.add(gasVoltage);
 		
 		JLabel lblTargetFlow = new JLabel("Target Flow");
 		lblTargetFlow.setForeground(Color.WHITE);
 		lblTargetFlow.setFont(new Font("Arial Black", Font.BOLD, 25));
-		lblTargetFlow.setBounds(10, 51, 182, 36);
+		lblTargetFlow.setBounds(10, 87, 182, 36);
 		panel.add(lblTargetFlow);
 		
 		lblAirTargetFlow = new JLabel("0.0");
 		lblAirTargetFlow.setForeground(Color.WHITE);
 		lblAirTargetFlow.setFont(new Font("Arial Black", Font.BOLD, 25));
-		lblAirTargetFlow.setBounds(221, 51, 122, 36);
+		lblAirTargetFlow.setBounds(221, 87, 122, 36);
 		panel.add(lblAirTargetFlow);
 		
 		lblGasTargetFlow = new JLabel("0.0");
 		lblGasTargetFlow.setForeground(Color.WHITE);
 		lblGasTargetFlow.setFont(new Font("Arial Black", Font.BOLD, 25));
-		lblGasTargetFlow.setBounds(350, 51, 132, 36);
+		lblGasTargetFlow.setBounds(350, 87, 132, 36);
 		panel.add(lblGasTargetFlow);
 		
-		btnStandBy = new JButton("Stand by");
-		btnStandBy.setEnabled(false);
-		btnStandBy.setBounds(482, 361, 100, 100);
-		panel_1.add(btnStandBy);
+		JPanel panel_2 = new JPanel();
+		panel_2.setBounds(0, 0, 492, 27);
+		panel.add(panel_2);
 		
-		btnStandBy.addActionListener(new ActionListener() {
+		standbyBtn = sys.sysStandbyBtn;
+		standbyBtn.setEnabled(false);
+		standbyBtn.setBounds(482, 361, 100, 100);
+		panel_1.add(standbyBtn);
+		
+		standbyBtn.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -194,7 +190,7 @@ public class MainFrame extends JFrame {
 				lblGasTargetFlow.setText("0.0");
 				airVoltage.setText(Double.toString(cal.airVoltage));
 				gasVoltage.setText(Double.toString(cal.gasVoltage));
-				btnStandBy.setEnabled(false);
+				standbyBtn.setEnabled(false);
 				manualBtn.setEnabled(true);
 				autoBtn.setEnabled(true);
 				statusMessage = "Stand By";
@@ -208,9 +204,8 @@ public class MainFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				autoFrame = new AutoFrame();
-				device.setFullScreenWindow(autoFrame);
-				autoFrame.setVisible(true);
+				cl.show(getContentPane(), "auto");
+				autoPanel.getGasName();
 				
 			}
 		});
@@ -219,33 +214,42 @@ public class MainFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				TestPanel testPanel = new TestPanel();
-				getContentPane().removeAll();
 
-				getContentPane().repaint();
-				getContentPane().add(testPanel);
-				getContentPane().repaint();
-				getContentPane().validate();
-				JButton btn = new JButton("AAA");
-				testPanel.add(btn);
-				//getContentPane().add(testPanel);
-				//testPanel.setLayout(null);
-				/*manualFrame = new ManualFrame();
-				device.setFullScreenWindow(manualFrame);
-				manualFrame.setVisible(true);*/
+		        cl.show(getContentPane(), "manual");
+
 			}
 		});
 		gasBtn.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				GasFrame gasFrame = new GasFrame();
-				device.setFullScreenWindow(gasFrame);
-				gasFrame.setVisible(true);
+				  cl.show(getContentPane(), "gas");
 				
 			}
 		});
+		settingBtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cl.show(getContentPane(), "type");
+				typePanel.initParameter();
+			}
+		});
 		
+	}
+	public void setCardLayoutComponent(JPanel panel_1) {
+		ManualPanel manualPanel = new ManualPanel();
+		autoPanel = new AutoPanel();
+		gasPanel = new GasPanel();
+		addGasPanel = new AddGasPanel();
+		typePanel = new TypePanel();
+		cl = (CardLayout)(getContentPane().getLayout());
+		getContentPane().add(panel_1,"main");
+		getContentPane().add(manualPanel, "manual");
+		getContentPane().add(autoPanel, "auto");
+		getContentPane().add(gasPanel, "gas");
+		getContentPane().add(addGasPanel, "addGas");
+		getContentPane().add(typePanel, "type");
 	}
 	private void setFullScreen() {
 		setBackground(Color.GRAY);

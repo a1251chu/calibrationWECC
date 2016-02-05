@@ -82,6 +82,10 @@ public class Calibratrion {
 	public void addGas(String gasName,Double gasConcPPM){
 		gasTablePPM.put(gasName, gasConcPPM);
 	}
+	
+	public void deleteGas(String gasName){
+		gasTablePPM.remove(gasName);
+	}
 
 
 	public void standBy(){
